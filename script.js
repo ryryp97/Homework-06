@@ -1,20 +1,23 @@
 $(document).ready(function () {
   console.log("ready!");
 
+  var d = new Date();
+
+  console.log(d.toDateString());
+
   $(".submitBtn").click( function() {
     event.preventDefault();
-    var cityData = $(".city").val();
-    console.log(cityData);
-    // $(".pastCities").prepend("<div>").append(cityData);
-    var cityDiv = $("<div>");
-    var p = $("<p>").text(cityData);
+    var cityName = $(".city").val();
+    console.log(cityName);
+    var cityDiv = $("<div>").attr("class", "card col-6");
+    var p = $("<p>").text(cityName);
     cityDiv.append(p);
     $(".pastCities").prepend(cityDiv);
-    cityWeather(cityData);
+    cityWeather(cityName);
   });
 
-  var cityWeather = function (cityData) {
-    var queryURL = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?q=" + cityData + "&appid=6b9535f80b269234aa9c6fcf1d77ba62";
+  var cityWeather = function (cityName) {
+    var queryURL = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=6b9535f80b269234aa9c6fcf1d77ba62";
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -28,6 +31,8 @@ $(document).ready(function () {
         method: "GET"
       }).then(function (data) {
         console.log(data);
+        $(".weatherData").removeClass("hide");
+        $(".cityDate").text(cityName + " " + d.toDateString());
       })
     });
   };
