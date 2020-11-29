@@ -10,7 +10,7 @@ Here is what the site looks like : ![Weather Dashboard](images/weather_dashboard
 
 ### Usage
 
-
+The site can used by filling the input field with a correctly spelled city name; after clicking the submit button the weather data for that city (temperature, humidity, wind speed, and UV index) will be displayed.  Cities previously search will appear below the input field, clicking on them will display the weather data for that city again.
 
 ### Credits
 
