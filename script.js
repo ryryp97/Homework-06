@@ -1,6 +1,3 @@
-
-  
-
 $(document).ready(function () {
   console.log("ready!");
 
@@ -8,6 +5,11 @@ $(document).ready(function () {
     event.preventDefault();
     var cityData = $(".city").val();
     console.log(cityData);
+    // $(".pastCities").prepend("<div>").append(cityData);
+    var cityDiv = $("<div>");
+    var p = $("<p>").text(cityData);
+    cityDiv.append(p);
+    $(".pastCities").prepend(cityDiv);
     cityWeather(cityData);
   });
 
