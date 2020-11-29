@@ -31,8 +31,14 @@ $(document).ready(function () {
         method: "GET"
       }).then(function (data) {
         console.log(data);
+        $(".cityDate").empty();
+        $(".temp").empty();
+        $(".humid").empty();
         $(".weatherData").removeClass("hide");
         $(".cityDate").text(cityName + " " + d.toDateString());
+        $(".cityDate").append("<img src=http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png>")
+        $(".temp").text(data.current.temp);
+        $(".humid").text(data.current.humidity);
       })
     });
   };
